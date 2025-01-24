@@ -1,3 +1,4 @@
+import Navbar from "@/components/ui/Navbar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body
         className={cn('min-h-screen font-sans antialiased grainy',
           inter.className)}>
+        <Navbar/>
         {children}
       </body>
     </html>
