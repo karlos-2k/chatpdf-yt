@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@kinde-oss/kinde-auth-nextjs": "^2.4.6",
+    "@prisma/client": "^6.2.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@tailwindcss/typography": "^0.5.15",
     "@tanstack/react-query": "^5.64.2",
@@ -17,6 +18,7 @@
     "@trpc/next": "^11.0.0-rc.724",
     "@trpc/react-query": "^11.0.0-rc.724",
     "@trpc/server": "^11.0.0-rc.724",
+    "@vercel/postgres": "^0.10.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
@@ -36,6 +38,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
     "postcss": "^8",
+    "prisma": "^6.2.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
