@@ -2,13 +2,32 @@
 
 import { trpc } from "@/app/_trpc/client"
 import UploadButton from "./UploadButton"
-import { Ghost, Link, MessageSquare, Plus, Trash } from "lucide-react"
+import { Ghost, Link, Loader2, MessageSquare, Plus, Trash } from "lucide-react"
 import Skeleton from "react-loading-skeleton"
 import { format } from "date-fns"
 import { Button } from "./ui/button"
+import { useState } from "react"
 
 const Dashboard = () => {
+    const [currentlyDeletingFile, setCurrentDeletingFile] = useState<string | null>(
+        null
+    )
+
+    const utils = trpc.useContext()
+
     const {data: files , isLoading} = trpc.getUserFiles.useQuery()
+
+    const { mutate: deleteFile } = trpc.deleteFile.useMutation({
+        onSuccess: ()=>{
+            utils.getUserFiles.invalidate()
+        },
+        onMutate({id}) {
+            setCurrentDeletingFile(id)
+        },
+        onSettled(){
+            setCurrentDeletingFile(null)
+        }
+    })
 
     return <main className="mx-auto max-w-7xl md:p-10">
         <div className="mt-8 flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0">
@@ -50,11 +69,18 @@ const Dashboard = () => {
 
                             <div className="flex items-center gap-2">
                                 <MessageSquare className="h-4 w-4"/>
-                                example
+                                EXAMPLE
                             </div>
 
-                            <Button size="sm" className="w-full" variant="destructive">
-                                <Trash className="h-4 w-4"/>
+                            <Button 
+                                onClick={()=>
+                                    deleteFile({id: file.id})
+                                }
+                                size="sm" className="w-full" variant="destructive">
+                                { currentlyDeletingFile === file.id ? (
+                                    <Loader2 className="h-4 w-4 animate-spin" /> 
+                                ) : (
+                                    <Trash className="h-4 w-4"/> )}
                             </Button>
                         </div>
                     </li>
