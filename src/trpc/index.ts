@@ -31,15 +31,22 @@ export const appRouter = router({
 
     return { success: true }
   }),
-  getUserFiles: privateProcedure.query(({ctx}) => {
-    const {userId} = ctx
-
-    return db.file.findMany({
-      where: {
-        userId
-      }
-    })
+  getUserFiles: privateProcedure.query(async ({ ctx }) => {
+    const { userId } = ctx;
+  
+    const files = await db.file.findMany({
+      where: { userId },
+      select: {
+        id: true,
+        name: true,   // ✅ Ensure name is included
+        createdAt: true,
+      },
+    });
+  
+    console.log("📂 Files fetched from DB:", files); // ✅ Debugging log
+    return files;
   }),
+  
   deleteFile: privateProcedure.input(
     z.object({ id: z.string() })
   ).mutation(async ({ctx, input}) => {
