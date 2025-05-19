@@ -1,4 +1,35 @@
+***Chat with PDF*** is an upcoming SaaS web application that allows users to **upload PDF documents and interact with them through natural language queries**. Built with a modern, scalable stack including **Next.js**, **PostgreSQL**, **tRPC**, and **TypeScript**, this tool aims to make reading and analyzing documents easier, faster, and smarter.
+
+> ⚠️ This project is currently under development. Stay tuned for updates!
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+---
+
+## 📦 Features (Planned)
+
+- 📄 Upload and index PDF documents
+- 💬 Chat with documents using natural language
+- 🔍 Extract key insights, summaries, or specific answers
+- 🔐 User authentication and secure storage
+- 🌐 Fast, responsive UI with Tailwind CSS
+
+---
+
+## 📂 Project Status
+
+🛠️ **In progress** — Core features are under active development.  
+🚀 Planned public launch: _TBD_
+
+---
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<!--
+## 🧪 Local Development (Coming Soon)
 
 ## Getting Started
 
